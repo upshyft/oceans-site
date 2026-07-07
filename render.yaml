@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: oceans-site
+    runtime: static
+    repo: https://github.com/upshyft/oceans-site
+    branch: main
+    buildCommand: ""
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    domains:
+      - www.theoceans.com
