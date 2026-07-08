@@ -46,9 +46,6 @@ h1{margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-s
 .hero-panel::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,43,75,0) 55%,rgba(6,43,75,.32) 100%);pointer-events:none;z-index:1}
 .hero-caption{position:absolute;left:22px;bottom:20px;z-index:2;display:flex;align-items:center;gap:10px}
 .hero-caption span{color:#fff;font-size:.86rem;font-weight:600;letter-spacing:.03em;text-shadow:0 1px 6px rgba(0,0,0,.35)}
-.hero-dots{position:absolute;right:22px;bottom:22px;z-index:2;display:flex;gap:8px}
-.hero-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.45);border:none;padding:0;cursor:pointer;transition:background .3s,transform .3s}
-.hero-dot.is-active{background:#fff;transform:scale(1.25)}
 @media (max-width:900px){.hero-stats{gap:20px;margin-top:22px}.hero-stat b{font-size:1.6rem}.hero-stat span{font-size:.74rem}.hero-stats-source{font-size:.72rem}}
 .section{padding:44px 0;border-top:1px solid var(--line)}
 .section-intro{max-width:720px;margin-bottom:26px}.section-label{margin:0 0 10px;color:var(--gold);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:600}
@@ -59,6 +56,8 @@ select{width:100%;max-width:100%}
 .card-stat{display:flex;flex-direction:column;gap:1px}
 .card-stat b{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.3rem;color:var(--accent);line-height:1}
 .card-stat span{font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+.card-fact{display:flex;gap:8px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:0 0 18px;padding:10px 12px;background:rgba(19,37,58,.04);border-radius:12px;line-height:1.4}
+.card-fact b{color:var(--accent);font-weight:600;white-space:nowrap}
 .card-stats-source{margin:12px 0 0;font-size:.7rem;color:var(--muted)}
 .card-stats-source a{color:var(--muted);text-decoration:underline}
 @media (max-width:900px){.card-stat b{font-size:1.15rem}.card-stat span{font-size:.64rem}.card-stats{gap:12px}}
@@ -106,19 +105,15 @@ select{width:100%;max-width:100%}
       <div class="hero-copy">
         <p class="eyebrow">South Bay Coastal Real Estate</p>
         <h1>Luxury guidance for the coastline you call home.</h1>
-        <p class="lede">Oceans Real Estate Group brings a data-first approach to the South Bay coastline — straight answers on price, pace, and competitiveness, backed by real market numbers instead of a sales pitch.</p>
+        <p class="lede">Oceans Real Estate Group offers thoughtful, informed guidance across the South Bay coastline — grounded in real market knowledge, not just a sales pitch.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="contact.html">Get in Touch</a>
           <a class="btn btn-secondary" href="#about">Meet Oceans</a>
         </div>
       </div>
       <div class="hero-panel" id="heroPanel">
-        <div class="hero-slide is-active"><img src="images/hero-manhattan-beach.jpg" alt="Manhattan Beach Pier at sunset, South Bay California" loading="eager"></div>
-        <div class="hero-slide"><img src="images/hero-beach-golden-hour.jpg" alt="South Bay coastline at golden hour" loading="lazy"></div>
-        <div class="hero-slide"><img src="images/hero-redondo-pier.jpg" alt="Redondo Beach pier and harbor, South Bay California" loading="lazy"></div>
-        <div class="hero-slide"><img src="images/hero-palos-verdes.jpg" alt="Palos Verdes coastal bluffs, South Bay California" loading="lazy"></div>
-        <div class="hero-caption"><span id="heroCaption">Manhattan Beach</span></div>
-        <div class="hero-dots" id="heroDots"></div>
+        <div class="hero-slide is-active"><img src="images/hero-point-vicente.jpg" alt="Point Vicente Lighthouse on the Palos Verdes bluffs, South Bay California" loading="eager"></div>
+        <div class="hero-caption"><span id="heroCaption">Point Vicente Lighthouse, Palos Verdes</span></div>
       </div>
     </div>
   </section>
@@ -149,12 +144,13 @@ select{width:100%;max-width:100%}
       <div class="section-intro">
         <p class="section-label">Communities</p>
         <h2>Local perspective across the South Bay.</h2>
-        <p>From Manhattan Beach to Palos Verdes, Oceans pairs polished presentation with neighborhood fluency and calm, informed guidance tailored to each move.</p>
+        <p>Founded on integrity, expertise, and personalized attention, Oceans Real Estate Group has roots throughout the South Bay — from Manhattan Beach to Palos Verdes — giving us an intimate, block-by-block knowledge of each community's neighborhoods, trends, and hidden gems.</p>
       </div>
       <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">
         <article class="card">
           <h3>Manhattan Beach</h3>
-          <p>Walk-to-the-sand living with a polished, upscale edge — the Strand, the Hill Section, and Tree Section draw buyers who want premium coastal real estate and a tight-knit village feel.</p>
+          <p>Walk-to-the-sand living with a polished, upscale edge. The Sand Section puts you steps from the Strand and the Pier; the Hill Section trades a few blocks of distance for sweeping ocean and skyline views; and the leafy Tree Section (anchored by the American Martyrs neighborhood) offers a quieter, family-friendly pace minutes from downtown. Three distinct lifestyles, one tight-knit village.</p>
+          <p class="card-fact"><b>Fun fact:</b> Manhattan Beach helped put beach volleyball on the map — the Manhattan Beach Open, first played in 1960, is the sport's longest-running professional tournament.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="3747757" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="28">0</b><span>Days on market</span></div>
@@ -163,7 +159,8 @@ select{width:100%;max-width:100%}
         </article>
         <article class="card">
           <h3>Hermosa Beach</h3>
-          <p>A compact, walkable beach town with an active, youthful energy — the Pier Plaza and Strand keep daily life close to the sand for buyers prioritizing lifestyle and community character.</p>
+          <p>A compact, walkable beach town with an active, youthful energy. Pier Plaza and the Strand keep restaurants, shops, and the sand just minutes from home, while the Hill and Valley neighborhoods east of PCH offer more space and quieter streets without losing that easy beach-town access buyers love.</p>
+          <p class="card-fact"><b>Fun fact:</b> Hermosa Beach is home to the Volleyball Hall of Fame, honoring the sport's roots along this stretch of coastline.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="2411057" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="31">0</b><span>Days on market</span></div>
@@ -172,7 +169,8 @@ select{width:100%;max-width:100%}
         </article>
         <article class="card">
           <h3>Redondo Beach</h3>
-          <p>A more attainable entry to coastal living, with distinct micro-markets from the harbor-close avenues to South Redondo — a broad mix of condos, townhomes, and single-family homes.</p>
+          <p>A more attainable entry to coastal living, with distinct micro-markets for every buyer — the marina-close streets around King Harbor, the classic beach cottages of North Redondo, and the quieter, family-oriented pockets of South Redondo — spanning a broad mix of condos, townhomes, and single-family homes.</p>
+          <p class="card-fact"><b>Fun fact:</b> The Redondo Beach Pier has been rebuilt several times since the 1890s, including a horseshoe-shaped design — today's version remains a beloved harborside gathering spot.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1574058" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="30">0</b><span>Days on market</span></div>
@@ -181,7 +179,8 @@ select{width:100%;max-width:100%}
         </article>
         <article class="card">
           <h3>El Segundo</h3>
-          <p>A small-town, walkable core just minutes from the beach and LAX-adjacent job centers — tight inventory and strong community ties keep demand steady for commuter-friendly buyers.</p>
+          <p>A small-town, walkable core just minutes from the beach and a major employment hub in its own right — tight inventory and strong community ties keep demand steady for buyers who want charm, convenience, and easy commutes alike.</p>
+          <p class="card-fact"><b>Fun fact:</b> Known as the Aerospace Capital of the World, El Segundo is headquarters to Mattel and home to major aerospace and sports facilities — all within a five-square-mile beach town.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1616533" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="29">0</b><span>Days on market</span></div>
@@ -190,7 +189,8 @@ select{width:100%;max-width:100%}
         </article>
         <article class="card">
           <h3>Torrance</h3>
-          <p>More space for the money across a broad range of established neighborhoods — larger lots, good schools, and everyday livability make it a favorite for buyers who want more house per dollar.</p>
+          <p>More space for the money across a broad range of established neighborhoods — larger lots, good schools, and everyday livability make it a favorite for buyers who want more house per dollar, all still minutes from the coast.</p>
+          <p class="card-fact"><b>Fun fact:</b> Torrance's original layout was planned by Frederick Law Olmsted Jr., son of the designer of New York's Central Park — a legacy still visible in the city's tree-lined boulevards.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1248253" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="26">0</b><span>Days on market</span></div>
@@ -199,7 +199,8 @@ select{width:100%;max-width:100%}
         </article>
         <article class="card">
           <h3>Palos Verdes</h3>
-          <p>Sweeping coastal bluffs, larger homesites, and a quiet, residential pace — ideal for buyers who want space, privacy, and ocean views above the everyday pace of the flatlands.</p>
+          <p>Sweeping coastal bluffs, larger homesites, and a quiet, residential pace across the Peninsula's communities — Palos Verdes Estates, Rolling Hills, and Rancho Palos Verdes — ideal for buyers who want space, privacy, and ocean views above the everyday pace of the flatlands.</p>
+          <p class="card-fact"><b>Fun fact:</b> The Peninsula is home to the historic Point Vicente Lighthouse, still an active aid to navigation, and the celebrated Wayfarers Chapel, a National Historic Landmark known as "the glass church."</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1733463" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="40">0</b><span>Days on market</span></div>
@@ -216,6 +217,7 @@ select{width:100%;max-width:100%}
         <p class="section-label">Meet the Team</p>
         <h2>South Bay expertise with personalized attention.</h2>
         <p>Founded with the vision of bringing integrity, expertise, and personalized attention to the forefront, Oceans Real Estate Group is a dynamic and forward-thinking collective of professionals. With roots in the South Bay community, we possess an intimate knowledge of its neighborhoods, trends, and hidden gems. Our mission is to leverage our expertise to provide you with unparalleled insights, ensuring your real estate goals become a seamless reality.</p>
+        <p>Our team blends nearly two decades of public-service discipline, hands-on short-term rental investment experience, and a Division I athlete's competitive drive with genuine local roots — both agents live and work right here in the South Bay, so every recommendation comes from lived experience, not guesswork.</p>
       </div>
       <div class="team-grid">
       <article class="team-member">
@@ -311,35 +313,6 @@ select{width:100%;max-width:100%}
 
 <script>
 (function(){
-  var captions=["Manhattan Beach","Golden Hour, South Bay","Redondo Beach","Palos Verdes"];
-  var slides=document.querySelectorAll('.hero-slide');
-  var dotsWrap=document.getElementById('heroDots');
-  var captionEl=document.getElementById('heroCaption');
-  if(slides.length && dotsWrap){
-    slides.forEach(function(_,i){
-      var d=document.createElement('button');
-      d.className='hero-dot'+(i===0?' is-active':'');
-      d.setAttribute('aria-label','Show slide '+(i+1));
-      d.addEventListener('click',function(){go(i)});
-      dotsWrap.appendChild(d);
-    });
-    var dots=dotsWrap.querySelectorAll('.hero-dot');
-    var idx=0,timer;
-    function go(i){
-      slides[idx].classList.remove('is-active');
-      dots[idx].classList.remove('is-active');
-      idx=i;
-      slides[idx].classList.add('is-active');
-      dots[idx].classList.add('is-active');
-      if(captionEl) captionEl.textContent=captions[idx]||'';
-    }
-    function next(){go((idx+1)%slides.length)}
-    function start(){timer=setInterval(next,5000)}
-    function stop(){clearInterval(timer)}
-    start();
-    var panel=document.getElementById('heroPanel');
-    if(panel){panel.addEventListener('mouseenter',stop);panel.addEventListener('mouseleave',start)}
-  }
   var counters=document.querySelectorAll('.stat-count');
   function formatStat(el,value){
     var prefix=el.getAttribute('data-prefix')||'';
