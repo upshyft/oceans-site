@@ -54,7 +54,21 @@ h1{margin:0 0 18px;font-family:'Cormorant Garamond',serif;font-weight:500;font-s
 .section-intro{max-width:720px;margin-bottom:26px}.section-label{margin:0 0 10px;color:var(--gold);text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:600}
 .section h2{margin:0 0 12px;font-family:'Cormorant Garamond',serif;font-size:clamp(2.4rem,4vw,3.8rem);line-height:.94;font-weight:500}.section p{margin:0;color:var(--muted);font-size:1.02rem}
 select{width:100%;max-width:100%}
-.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}.card{background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.card h3{margin:0 0 8px;font-size:1rem}.card p{font-size:.98rem}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:24px}.card{background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:24px;padding:24px;box-shadow:var(--shadow);display:flex;flex-direction:column}.card h3{margin:0 0 8px;font-size:1rem}.card p{font-size:.98rem;margin:0 0 18px}
+.card-stats{display:flex;gap:16px;margin-top:auto;padding-top:16px;border-top:1px solid rgba(19,37,58,.08);flex-wrap:wrap}
+.card-stat{display:flex;flex-direction:column;gap:1px}
+.card-stat b{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.3rem;color:var(--accent);line-height:1}
+.card-stat span{font-size:.68rem;color:var(--muted);letter-spacing:.02em}
+.card-stats-source{margin:12px 0 0;font-size:.7rem;color:var(--muted)}
+.card-stats-source a{color:var(--muted);text-decoration:underline}
+@media (max-width:900px){.card-stat b{font-size:1.15rem}.card-stat span{font-size:.64rem}.card-stats{gap:12px}}
+#priorities{padding:36px 0;border-top:1px solid var(--line)}
+.priorities-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.priority{display:flex;flex-direction:column;gap:4px;padding:20px 24px;background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:20px}
+.priority-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.priority .stat-count{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:2rem;color:var(--accent);line-height:1;margin:2px 0}
+.priority-desc{font-size:.85rem;color:var(--muted)}
+@media (max-width:900px){.priorities-grid{grid-template-columns:1fr;gap:14px}.priority{padding:18px 20px}.priority .stat-count{font-size:1.7rem}}
 .team-grid{display:flex;flex-direction:column;gap:24px;margin-top:28px}.team-member{display:grid;grid-template-columns:280px minmax(0,1fr);gap:40px;background:var(--surface);border:1px solid rgba(19,37,58,.09);border-radius:34px;box-shadow:var(--shadow);padding:36px}.team-photo{width:100%}.team-photo img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top;border-radius:20px;border:1px solid rgba(19,37,58,.08);background:#dbe3ea;display:block}.team-info{min-width:0;display:flex;flex-direction:column;justify-content:center}.team-contact{margin:0 0 12px;color:var(--muted);font-size:.98rem}.bio-kicker{margin:0 0 10px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}.team-card-name{margin:0 0 12px!important;font-family:'Cormorant Garamond',serif!important;font-size:40px!important;line-height:.98!important;font-weight:500!important}.team-info p{margin:0 0 12px;color:var(--muted);font-size:1.02rem;max-width:78ch}
 .footer{padding:34px 0 64px;border-top:1px solid var(--line)}
 .footer-inner{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
@@ -92,7 +106,7 @@ select{width:100%;max-width:100%}
       <div class="hero-copy">
         <p class="eyebrow">South Bay Coastal Real Estate</p>
         <h1>Luxury guidance for the coastline you call home.</h1>
-        <p class="lede">Oceans Real Estate Group offers thoughtful representation across Manhattan Beach, Hermosa Beach, Redondo Beach, El Segundo, Torrance, and Palos Verdes through local knowledge, elevated presentation, and steady guidance.</p>
+        <p class="lede">Oceans Real Estate Group offers thoughtful representation across Manhattan Beach, Hermosa Beach, Redondo Beach, El Segundo, Torrance, and Palos Verdes — clear answers on price, pace, and competitiveness in every market, backed by local knowledge and steady guidance.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="contact.html">Get in Touch</a>
           <a class="btn btn-secondary" href="#about">Meet Oceans</a>
@@ -114,6 +128,28 @@ select{width:100%;max-width:100%}
       </div>
     </div>
   </section>
+  <section class="section" id="priorities">
+    <div class="container">
+      <div class="priorities-grid">
+        <div class="priority">
+          <span class="priority-label">What you'll pay</span>
+          <b class="stat-count" data-target="1.2" data-prefix="$" data-suffix="M" data-decimals="1">$0M</b>
+          <span class="priority-desc">Median sale price across the South Bay</span>
+        </div>
+        <div class="priority">
+          <span class="priority-label">How fast it moves</span>
+          <b class="stat-count" data-target="58">0</b>
+          <span class="priority-desc">Median days on market</span>
+        </div>
+        <div class="priority">
+          <span class="priority-label">How competitive it is</span>
+          <b class="stat-count" data-target="98.3" data-suffix="%" data-decimals="1">0%</b>
+          <span class="priority-desc">Median sale-to-list price</span>
+        </div>
+      </div>
+      <p class="card-stats-source">The 3 numbers every South Bay buyer and seller should know · South Bay, CA market data · <a href="https://www.redfin.com/neighborhood/547182/CA/Rancho-Palos-Verdes/South-Bay/housing-market" target="_blank" rel="noopener">via Redfin</a>, updated July 2026</p>
+    </div>
+  </section>
   <section class="section" id="areas">
     <div class="container">
       <div class="section-intro">
@@ -122,13 +158,62 @@ select{width:100%;max-width:100%}
         <p>From Manhattan Beach to Palos Verdes, Oceans pairs polished presentation with neighborhood fluency and calm, informed guidance tailored to each move.</p>
       </div>
       <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">
-        <article class="card"><h3>Manhattan Beach</h3><p>High-demand coastal inventory, premium presentation standards, and a fast-moving luxury market where pricing strategy, timing, and neighborhood-level positioning all play an important role.</p></article>
-        <article class="card"><h3>Hermosa Beach</h3><p>A walkable beach lifestyle with strong neighborhood identity and consistent demand from buyers who value coastal living and community character.</p></article>
-        <article class="card"><h3>Redondo Beach</h3><p>Diverse housing options, coastal access, and distinct micro-markets from the avenues to South Redondo.</p></article>
-        <article class="card"><h3>El Segundo</h3><p>A small-town coastal feel paired with strong community ties, charm, and convenient access.</p></article>
-        <article class="card"><h3>Torrance</h3><p>More space, steady long-term value, and a broad range of neighborhoods with everyday livability.</p></article>
-        <article class="card"><h3>Palos Verdes</h3><p>Expansive views, larger homesites, and a refined residential pace shaped by location and landscape.</p></article>
+        <article class="card">
+          <h3>Manhattan Beach</h3>
+          <p>Walk-to-the-sand living with a polished, upscale edge — the Strand, the Hill Section, and Tree Section draw buyers who want premium coastal real estate and a tight-knit village feel.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="3747757" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="28">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="100.5" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Hermosa Beach</h3>
+          <p>A compact, walkable beach town with an active, youthful energy — the Pier Plaza and Strand keep daily life close to the sand for buyers prioritizing lifestyle and community character.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="2411057" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="31">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="99.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Redondo Beach</h3>
+          <p>A more attainable entry to coastal living, with distinct micro-markets from the harbor-close avenues to South Redondo — a broad mix of condos, townhomes, and single-family homes.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="1574058" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="30">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="100.4" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>El Segundo</h3>
+          <p>A small-town, walkable core just minutes from the beach and LAX-adjacent job centers — tight inventory and strong community ties keep demand steady for commuter-friendly buyers.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="1616533" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="29">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="99.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Torrance</h3>
+          <p>More space for the money across a broad range of established neighborhoods — larger lots, good schools, and everyday livability make it a favorite for buyers who want more house per dollar.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="1248253" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="26">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="100.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Palos Verdes</h3>
+          <p>Sweeping coastal bluffs, larger homesites, and a quiet, residential pace — ideal for buyers who want space, privacy, and ocean views above the everyday pace of the flatlands.</p>
+          <div class="card-stats">
+            <div class="card-stat"><b class="stat-count" data-target="1733463" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="40">0</b><span>Days on market</span></div>
+            <div class="card-stat"><b class="stat-count" data-target="99.2" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+        </article>
       </div>
+      <p class="card-stats-source">Individual city data via Redfin, updated July 2026 — <a href="https://www.redfin.com/city/11576/CA/Manhattan-Beach/housing-market" target="_blank" rel="noopener">Manhattan Beach</a>, <a href="https://www.redfin.com/city/8536/CA/Hermosa-Beach/housing-market" target="_blank" rel="noopener">Hermosa Beach</a>, <a href="https://www.redfin.com/city/15507/CA/Redondo-Beach/housing-market" target="_blank" rel="noopener">Redondo Beach</a>, <a href="https://www.redfin.com/city/5771/CA/El-Segundo/housing-market" target="_blank" rel="noopener">El Segundo</a>, <a href="https://www.redfin.com/city/20094/CA/Torrance/housing-market" target="_blank" rel="noopener">Torrance</a>, <a href="https://www.redfin.com/city/15404/CA/Rancho-Palos-Verdes/housing-market" target="_blank" rel="noopener">Palos Verdes</a></p>
     </div>
   </section>
   <section class="section" id="about">
@@ -172,12 +257,12 @@ select{width:100%;max-width:100%}
       <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">
         <article class="card">
           <h3>Curious what your home is worth?</h3>
-          <p>Get a personalized South Bay home valuation, prepared by an agent — never an automated estimate.</p>
+          <p>Get a personalized South Bay home valuation grounded in current price, days-on-market, and sale-to-list data for your neighborhood — prepared by an agent, never an automated estimate.</p>
           <p style="margin-top:14px"><a class="btn btn-primary" href="valuation.html" style="width:100%;text-align:center">Request a Valuation</a></p>
         </article>
         <article class="card">
           <h3>Exploring an investment property?</h3>
-          <p>Talk strategy on short-term rentals and income-producing real estate with hands-on investor experience.</p>
+          <p>Talk strategy on short-term rentals and income-producing real estate, informed by real-time pricing and market-speed data, with hands-on investor experience.</p>
           <p style="margin-top:14px"><a class="btn btn-primary" href="investor.html" style="width:100%;text-align:center">Start Investor Conversation</a></p>
         </article>
       </div>
@@ -266,31 +351,45 @@ select{width:100%;max-width:100%}
     var prefix=el.getAttribute('data-prefix')||'';
     var suffix=el.getAttribute('data-suffix')||'';
     var decimals=parseInt(el.getAttribute('data-decimals'),10)||0;
+    if(el.getAttribute('data-format')==='compact'){
+      return prefix+(value/1000000).toFixed(1)+'M'+suffix;
+    }
     return prefix+value.toFixed(decimals)+suffix;
   }
+  function animateGroup(group){
+    group.forEach(function(el){
+      var target=parseFloat(el.getAttribute('data-target'))||0;
+      var dur=1200,startTime=null;
+      function step(ts){
+        if(!startTime) startTime=ts;
+        var progress=Math.min((ts-startTime)/dur,1);
+        el.textContent=formatStat(el,progress*target);
+        if(progress<1) requestAnimationFrame(step);
+        else el.textContent=formatStat(el,target);
+      }
+      requestAnimationFrame(step);
+    });
+  }
   if(counters.length && 'IntersectionObserver' in window){
-    var seen=false;
+    var groups={};
+    counters.forEach(function(el){
+      var container=el.closest('.hero-stats,.card-stats,.priorities-grid')||el.parentElement;
+      if(!groups[container]) groups[container]={container:container,items:[]};
+      groups[container].items.push(el);
+    });
     var obs=new IntersectionObserver(function(entries){
       entries.forEach(function(entry){
-        if(entry.isIntersecting && !seen){
-          seen=true;
-          counters.forEach(function(el){
-            var target=parseFloat(el.getAttribute('data-target'))||0;
-            var dur=1200,startTime=null;
-            function step(ts){
-              if(!startTime) startTime=ts;
-              var progress=Math.min((ts-startTime)/dur,1);
-              el.textContent=formatStat(el,progress*target);
-              if(progress<1) requestAnimationFrame(step);
-              else el.textContent=formatStat(el,target);
-            }
-            requestAnimationFrame(step);
-          });
-          obs.disconnect();
+        if(entry.isIntersecting){
+          var g=groups[entry.target];
+          if(g && !g.done){
+            g.done=true;
+            animateGroup(g.items);
+          }
+          obs.unobserve(entry.target);
         }
       });
-    },{threshold:.4});
-    obs.observe(counters[0]);
+    },{threshold:.3});
+    Object.keys(groups).forEach(function(key){obs.observe(groups[key].container)});
   } else {
     counters.forEach(function(el){el.textContent=formatStat(el,parseFloat(el.getAttribute('data-target'))||0)});
   }
