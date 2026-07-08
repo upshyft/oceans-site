@@ -45,7 +45,7 @@ select{width:100%;max-width:100%}
 .contact-aside li b{color:var(--text);display:block;font-size:.95rem;margin-bottom:2px}
 .contact-aside .aside-divider{margin:18px 0;border-top:1px solid rgba(19,37,58,.1)}
 @media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
-@media (max-width:900px){.header-inner{min-height:66px}.header-links{display:none}.brand-mark{width:min(620px,94vw);height:26px;background-size:auto 26px}.hero{padding:30px 0 24px}.hero-grid,.cards,.team-member{grid-template-columns:1fr}.hero-copy{max-width:none}.eyebrow{margin-bottom:12px;font-size:11px}.hero-copy h1{font-size:clamp(2.9rem,12vw,4.5rem);line-height:.96;max-width:11ch;letter-spacing:-.03em;text-wrap:balance}.lede{font-size:1rem;max-width:24ch}.cta-row{gap:12px}.btn{min-height:54px;padding:0 24px}.hero-panel{aspect-ratio:4/3}.team-member{padding:22px;gap:18px}.team-photo img{aspect-ratio:4/3;max-width:220px;margin:0 auto}.team-card-name{font-size:34px!important}.footer-brand{width:min(280px,72vw);height:24px}form div[style*="grid-template-columns:repeat(2,minmax(0,1fr))"]{grid-template-columns:1fr !important}}
+@media (max-width:900px){.header-inner{min-height:66px}.header-links{display:none}.brand-mark{width:min(620px,94vw);height:26px;background-size:auto 26px}.hero{padding:30px 0 24px}.hero-grid,.cards,.team-member{grid-template-columns:1fr}.hero-copy{max-width:none}.eyebrow{margin-bottom:12px;font-size:11px}.hero-copy h1{font-size:clamp(2.9rem,12vw,4.5rem);line-height:.96;max-width:11ch;letter-spacing:-.03em;text-wrap:balance}.lede{font-size:1rem;max-width:24ch}.cta-row{gap:12px}.btn{min-height:54px;padding:0 24px}.hero-panel{aspect-ratio:4/3}.team-member{padding:22px;gap:18px}.team-photo img{aspect-ratio:4/3;max-width:220px;margin:0 auto}.team-card-name{font-size:34px!important}.footer-brand{width:min(280px,72vw);height:24px}form div[style*="grid-template-columns:repeat(2,minmax(0,1fr))"],form div[style*="grid-template-columns:repeat(3,minmax(0,1fr))"]{grid-template-columns:1fr !important}}
 </style>
 </head>
 <body>
@@ -56,6 +56,8 @@ select{width:100%;max-width:100%}
     <nav class="header-links" aria-label="Primary">
       <a href="#areas">Areas</a>
       <a href="#about">About</a>
+      <a href="valuation.html">Valuation</a>
+      <a href="investor.html">Investors</a>
       <a href="contact.html">Contact</a>
     </nav>
     <a class="header-cta" href="contact.html">Contact</a>
@@ -129,76 +131,19 @@ select{width:100%;max-width:100%}
       </article>
       </div>
     </section>
-  <section class="section" id="valuation">
+  <section class="section" id="next-steps">
     <div class="container">
-      <div class="section-intro">
-        <p class="section-label">Home Valuation</p>
-        <h2>Find out what your South Bay home may be worth.</h2>
-        <p>Request a personalized home valuation to get a clearer sense of pricing, positioning, and the current market in your specific neighborhood.</p>
-      </div>
-      <div class="contact-grid">
-      <form data-lead-form="valuation" style="margin:0;background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:24px;padding:24px;box-shadow:var(--shadow);display:grid;gap:14px">
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Name<input type="text" name="Valuation name" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Email<input type="email" name="Valuation email" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Property address<input type="text" name="Property address" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Property type<input type="text" name="Property type" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Bedrooms<input type="number" name="Bedrooms" min="0" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Bathrooms<input type="number" name="Bathrooms" min="0" step="0.5" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Timing<select name="Timing" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"><option>Just curious</option><option>Within 12 months</option><option>Within 6 months</option><option>Soon</option></select></label>
-        </div>
-        <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Anything we should know?<textarea name="Valuation notes" rows="4" style="padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;resize:vertical"></textarea></label>
-        <button class="btn btn-primary" type="submit" style="width:max-content">Request valuation</button>
-        <p class="form-success" style="display:none;margin:4px 0 0;color:#24543a;font-weight:600">Thank you — your valuation request has been received. We will follow up soon.</p>
-      </form>
-      <aside class="contact-aside">
-        <h3>Why get a valuation</h3>
-        <ul>
-          <li><span>📈</span><div><b>Current market pricing</b>See how today's South Bay market compares to when you purchased.</div></li>
-          <li><span>🏡</span><div><b>Positioning strategy</b>Understand what buyers are looking for in your specific neighborhood.</div></li>
-          <li><span>⏱️</span><div><b>No pressure timeline</b>Useful whether you're selling next month or just curious.</div></li>
-        </ul>
-        <div class="aside-divider"></div>
-        <p style="margin:0;color:var(--muted);font-size:.95rem">Valuations are prepared personally — never an automated estimate.</p>
-      </aside>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="investor">
-    <div class="container">
-      <div class="section-intro">
-        <p class="section-label">Investors</p>
-        <h2>Explore short-term rental and investment opportunities.</h2>
-        <p>For buyers and owners looking at income-producing real estate, Oceans offers a direct way to start a conversation around strategy, property fit, and next steps.</p>
-      </div>
-      <div class="contact-grid">
-      <form data-lead-form="investor" style="margin:0;background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:24px;padding:24px;box-shadow:var(--shadow);display:grid;gap:14px">
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Name<input type="text" name="Investor name" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Email<input type="email" name="Investor email" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Phone<input type="tel" name="Investor phone" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
-          <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Investment focus<select name="Investment focus" style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"><option>Short-term rental</option><option>Long-term rental</option><option>Primary home with income potential</option><option>General investment strategy</option></select></label>
-        </div>
-        <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">What are you looking for?<textarea name="Investor goals" rows="5" required style="padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;resize:vertical"></textarea></label>
-        <button class="btn btn-primary" type="submit" style="width:max-content">Start investor conversation</button>
-        <p class="form-success" style="display:none;margin:4px 0 0;color:#24543a;font-weight:600">Thank you — your investor inquiry has been received. We will be in touch soon.</p>
-      </form>
-      <aside class="contact-aside">
-        <h3>Investor advantage</h3>
-        <ul>
-          <li><span>🏖️</span><div><b>Short-term rental experience</b>Hands-on insight from an owner and manager of STR property.</div></li>
-          <li><span>📊</span><div><b>Underwriting support</b>Practical help evaluating income-producing potential before you buy.</div></li>
-          <li><span>🤝</span><div><b>Ongoing strategy</b>A long-term resource, not just a single transaction.</div></li>
-        </ul>
-        <div class="aside-divider"></div>
-        <p style="margin:0;color:var(--muted);font-size:.95rem">Learn more about investing strategy at <a href="https://upshyft.com" target="_blank" rel="noopener noreferrer">upshyft.com</a>.</p>
-      </aside>
+      <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+        <article class="card">
+          <h3>Curious what your home is worth?</h3>
+          <p>Get a personalized South Bay home valuation, prepared by an agent — never an automated estimate.</p>
+          <p style="margin-top:14px"><a class="btn btn-primary" href="valuation.html">Request a Valuation</a></p>
+        </article>
+        <article class="card">
+          <h3>Exploring an investment property?</h3>
+          <p>Talk strategy on short-term rentals and income-producing real estate with hands-on investor experience.</p>
+          <p style="margin-top:14px"><a class="btn btn-primary" href="investor.html">Start Investor Conversation</a></p>
+        </article>
       </div>
     </div>
   </section>
