@@ -47,8 +47,13 @@ select{width:100%;max-width:100%}
 .card-stat{display:flex;flex-direction:column;gap:1px}
 .card-stat b{font-family:'Cormorant Garamond',serif;font-weight:500;font-size:1.3rem;color:var(--accent);line-height:1}
 .card-stat span{font-size:.68rem;color:var(--muted);letter-spacing:.02em}
-.card-fact{display:flex;gap:8px;align-items:flex-start;font-size:.82rem;color:var(--muted);margin:0 0 18px;padding:10px 12px;background:rgba(19,37,58,.04);border-radius:12px;line-height:1.4}
-.card-fact b{color:var(--accent);font-weight:600;white-space:nowrap}
+.market-gauge{margin:16px 0 0}
+.market-gauge-label{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.market-gauge-title{font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.market-gauge-value{font-size:.78rem;font-weight:700;color:var(--accent)}
+.market-gauge-track{position:relative;height:8px;border-radius:999px;background:linear-gradient(90deg,#8fa6b8 0%,#c9c0ab 50%,var(--gold) 100%);overflow:visible}
+.market-gauge-marker{position:absolute;top:50%;width:14px;height:14px;border-radius:50%;background:var(--accent);border:2px solid var(--surface);box-shadow:0 1px 4px rgba(19,37,58,.35);transform:translate(-50%,-50%);transition:left 1s cubic-bezier(.16,1,.3,1)}
+.market-gauge-ticks{display:flex;justify-content:space-between;margin-top:6px;font-size:.62rem;color:var(--muted);letter-spacing:.02em}
 .card-stats-source{margin:12px 0 0;font-size:.7rem;color:var(--muted)}
 .card-stats-source a{color:var(--muted);text-decoration:underline}
 @media (max-width:900px){.card-stat b{font-size:1.15rem}.card-stat span{font-size:.64rem}.card-stats{gap:12px}}
@@ -143,61 +148,85 @@ select{width:100%;max-width:100%}
         <article class="card">
           <h3>Manhattan Beach</h3>
           <p>Walk-to-the-sand living with a polished, upscale edge. The Sand Section puts you steps from the Strand and the Pier; the Hill Section trades a few blocks of distance for sweeping ocean and skyline views; and the leafy Tree Section offers a quieter, family-friendly pace minutes from downtown. Three distinct lifestyles, one tight-knit village.</p>
-          <p class="card-fact"><b>Fun fact:</b> Manhattan Beach helped put beach volleyball on the map — the Manhattan Beach Open, first played in 1960, is the sport's longest-running professional tournament.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="3747757" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="28">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="100.5" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
           </div>
+          <div class="market-gauge" data-score="61.2">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Balanced, seller-leaning</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
+          </div>
         </article>
         <article class="card">
           <h3>Hermosa Beach</h3>
           <p>A compact, walkable beach town with an active, youthful energy. Pier Plaza and the Strand keep restaurants, shops, and the sand just minutes from home, while the Hill and Valley neighborhoods east of PCH offer more space and quieter streets without losing that easy beach-town access buyers love.</p>
-          <p class="card-fact"><b>Fun fact:</b> Hermosa Beach is home to the Volleyball Hall of Fame, honoring the sport's roots along this stretch of coastline.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="2411057" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="31">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="99.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
           </div>
+          <div class="market-gauge" data-score="52.4">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Balanced</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
+          </div>
         </article>
         <article class="card">
           <h3>Redondo Beach</h3>
           <p>A more attainable entry to coastal living, with distinct micro-markets for every buyer — the marina-close streets around King Harbor, the classic beach cottages of North Redondo, and the quieter, family-oriented pockets of South Redondo — spanning a broad mix of condos, townhomes, and single-family homes.</p>
-          <p class="card-fact"><b>Fun fact:</b> The Redondo Beach Pier has been rebuilt several times since the 1890s, including a horseshoe-shaped design — today's version remains a beloved harborside gathering spot.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1574058" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="30">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="100.4" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
           </div>
+          <div class="market-gauge" data-score="58.2">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Balanced, seller-leaning</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
+          </div>
         </article>
         <article class="card">
           <h3>El Segundo</h3>
           <p>A small-town, walkable core just minutes from the beach and a major employment hub in its own right — tight inventory and strong community ties keep demand steady for buyers who want charm, convenience, and easy commutes alike.</p>
-          <p class="card-fact"><b>Fun fact:</b> Known as the Aerospace Capital of the World, El Segundo is headquarters to Mattel and home to major aerospace and sports facilities — all within a five-square-mile beach town.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1616533" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="29">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="99.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
           </div>
+          <div class="market-gauge" data-score="53.8">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Balanced</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
+          </div>
         </article>
         <article class="card">
           <h3>Torrance</h3>
           <p>More space for the money across a broad range of established neighborhoods — larger lots, good schools, and everyday livability make it a favorite for buyers who want more house per dollar, all still minutes from the coast.</p>
-          <p class="card-fact"><b>Fun fact:</b> Torrance's original layout was planned by Frederick Law Olmsted Jr., son of the designer of New York's Central Park — a legacy still visible in the city's tree-lined boulevards.</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1248253" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="26">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="100.8" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
           </div>
+          <div class="market-gauge" data-score="66.4">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Seller's market</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
+          </div>
         </article>
         <article class="card">
           <h3>Palos Verdes</h3>
           <p>Sweeping coastal bluffs, larger homesites, and a quiet, residential pace across the Peninsula's communities — Palos Verdes Estates, Rolling Hills, and Rancho Palos Verdes — ideal for buyers who want space, privacy, and ocean views above the everyday pace of the flatlands.</p>
-          <p class="card-fact"><b>Fun fact:</b> The Peninsula is home to the historic Point Vicente Lighthouse, still an active aid to navigation, and the celebrated Wayfarers Chapel, a National Historic Landmark known as "the glass church."</p>
           <div class="card-stats">
             <div class="card-stat"><b class="stat-count" data-target="1733463" data-prefix="$" data-suffix="" data-format="compact">$0</b><span>Median sale price</span></div>
             <div class="card-stat"><b class="stat-count" data-target="40">0</b><span>Days on market</span></div>
             <div class="card-stat"><b class="stat-count" data-target="99.2" data-suffix="%" data-decimals="1">0%</b><span>Sale-to-list</span></div>
+          </div>
+          <div class="market-gauge" data-score="45.2">
+            <div class="market-gauge-label"><span class="market-gauge-title">Market conditions</span><span class="market-gauge-value">Balanced</span></div>
+            <div class="market-gauge-track"><span class="market-gauge-marker"></span></div>
+            <div class="market-gauge-ticks"><span>Buyer's</span><span>Balanced</span><span>Seller's</span></div>
           </div>
         </article>
       </div>
@@ -352,6 +381,34 @@ select{width:100%;max-width:100%}
     Object.keys(groups).forEach(function(key){obs.observe(groups[key].container)});
   } else {
     counters.forEach(function(el){el.textContent=formatStat(el,parseFloat(el.getAttribute('data-target'))||0)});
+  }
+})();
+</script>
+
+<script>
+(function(){
+  var gauges=document.querySelectorAll('.market-gauge');
+  if(!gauges.length) return;
+  function place(gauge){
+    var score=parseFloat(gauge.getAttribute('data-score'))||50;
+    var marker=gauge.querySelector('.market-gauge-marker');
+    if(marker) marker.style.left=Math.max(4,Math.min(96,score))+'%';
+  }
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          place(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },{threshold:.3});
+    gauges.forEach(function(g){
+      g.querySelector('.market-gauge-marker').style.left='0%';
+      obs.observe(g);
+    });
+  } else {
+    gauges.forEach(place);
   }
 })();
 </script>
