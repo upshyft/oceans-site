@@ -302,14 +302,38 @@ select{width:100%;max-width:100%}
 <script>
 (function(){
   // Leads are posted to a HighLevel Inbound Webhook so they land directly in the CRM.
-  // Replace this placeholder with the real webhook URL once created in HighLevel
-  // (Workflows -> new workflow -> Inbound Webhook trigger -> copy URL).
   const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/lBQkVASJCcdKtyhY2EaN/webhook-trigger/0914ce70-d966-4379-852b-aaa5f551db81';
+
+
+  // Spam protection (client-side only; real visitors see no change).
+  const LOADED_AT = Date.now();
+  const MIN_FILL_MS = 3000;
+  const HONEYPOT = 'company_website';
+  function looksLikeJunkName(name){
+    return name.split(/\s+/).some(t => {
+      const w = t.toLowerCase().replace(/[^a-z]/g,'');
+      if(w.length >= 5 && !/[aeiouy]/.test(w)) return true;   // e.g. "Lmxks"
+      return /[^aeiouy]{6,}/.test(w);                           // e.g. "Hwznlxds"
+    });
+  }
+  function looksLikeDotTrickGmail(email){
+    const m = email.toLowerCase().match(/^([^@]+)@(gmail|googlemail)\.com$/);
+    if(!m) return false;
+    const parts = m[1].split('.');
+    return parts.length >= 4 && parts.filter(p => p.length <= 2).length >= 2; // e.g. "hej.u.qa.be.5.5.0"
+  }
+  function showSuccess(form){
+    form.reset();
+    const success = form.querySelector('.form-success');
+    if(success){ success.style.display = 'block'; setTimeout(()=>{ success.style.display = 'none'; }, 6000); success.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  }
 
   document.querySelectorAll('form[data-lead-form]').forEach(form => {
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
       const fd = new FormData(form);
+      const trap = (fd.get(HONEYPOT) || '').toString().trim();
+      fd.delete(HONEYPOT);
       const source = form.getAttribute('data-lead-form') || 'general';
       const first = (fd.get('First name') || '').toString().trim();
       const last = (fd.get('Last name') || '').toString().trim();
@@ -317,6 +341,7 @@ select{width:100%;max-width:100%}
       const email = (fd.get('Email') || fd.get('Valuation email') || fd.get('Investor email') || '').toString().trim();
       const phone = (fd.get('Phone') || fd.get('Investor phone') || '').toString().trim();
       const details = Array.from(fd.entries()).filter(([k]) => !['First name','Last name','Name','Valuation name','Investor name','Email','Valuation email','Investor email','Phone','Investor phone'].includes(k)).map(([k,v]) => `${k}: ${v}`).join(' | ');
+      if(trap || Date.now() - LOADED_AT < MIN_FILL_MS || looksLikeJunkName(name) || looksLikeDotTrickGmail(email)){ showSuccess(form); return; }
       const payload = { source, name, first_name:first, last_name:last, email, phone, details, submittedAt:new Date().toISOString(), page: location.href };
 
       const submitBtn = form.querySelector('button[type="submit"]');
@@ -329,9 +354,7 @@ select{width:100%;max-width:100%}
       }).catch(()=>{ /* fail silently for the visitor; form still resets */ })
         .finally(()=>{
           if(submitBtn){ submitBtn.disabled = false; }
-          form.reset();
-          const success = form.querySelector('.form-success');
-          if(success){ success.style.display = 'block'; setTimeout(()=>{ success.style.display = 'none'; }, 6000); success.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+          showSuccess(form);
         });
     });
   });
