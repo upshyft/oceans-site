@@ -78,6 +78,7 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       </div>
       <div class="contact-grid">
       <form data-lead-form="investor" style="margin:0;background:var(--surface);border:1px solid rgba(19,37,58,.08);border-radius:24px;padding:24px;box-shadow:var(--shadow);display:grid;gap:14px">
+        <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden"><label>Leave this field empty<input type="text" name="company_website" tabindex="-1" autocomplete="off" value=""></label></div>
         <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px">
           <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Name<input type="text" name="Investor name" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
           <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Email<input type="email" name="Investor email" required style="min-height:52px;padding:0 14px;border:1px solid var(--line);border-radius:14px;background:#fff"></label>
@@ -117,10 +118,36 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
   // Leads are posted to a HighLevel Inbound Webhook so they land directly in the CRM.
   const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/lBQkVASJCcdKtyhY2EaN/webhook-trigger/0914ce70-d966-4379-852b-aaa5f551db81';
 
+
+  // Spam protection (client-side only; real visitors see no change).
+  const LOADED_AT = Date.now();
+  const MIN_FILL_MS = 3000;
+  const HONEYPOT = 'company_website';
+  function looksLikeJunkName(name){
+    return name.split(/\s+/).some(t => {
+      const w = t.toLowerCase().replace(/[^a-z]/g,'');
+      if(w.length >= 5 && !/[aeiouy]/.test(w)) return true;   // e.g. "Lmxks"
+      return /[^aeiouy]{6,}/.test(w);                           // e.g. "Hwznlxds"
+    });
+  }
+  function looksLikeDotTrickGmail(email){
+    const m = email.toLowerCase().match(/^([^@]+)@(gmail|googlemail)\.com$/);
+    if(!m) return false;
+    const parts = m[1].split('.');
+    return parts.length >= 4 && parts.filter(p => p.length <= 2).length >= 2; // e.g. "hej.u.qa.be.5.5.0"
+  }
+  function showSuccess(form){
+    form.reset();
+    const success = form.querySelector('.form-success');
+    if(success){ success.style.display = 'block'; setTimeout(()=>{ success.style.display = 'none'; }, 6000); success.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  }
+
   document.querySelectorAll('form[data-lead-form]').forEach(form => {
     form.addEventListener('submit', (e)=>{
       e.preventDefault();
       const fd = new FormData(form);
+      const trap = (fd.get(HONEYPOT) || '').toString().trim();
+      fd.delete(HONEYPOT);
       const source = form.getAttribute('data-lead-form') || 'general';
       const first = (fd.get('First name') || '').toString().trim();
       const last = (fd.get('Last name') || '').toString().trim();
@@ -128,6 +155,7 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       const email = (fd.get('Email') || fd.get('Valuation email') || fd.get('Investor email') || '').toString().trim();
       const phone = (fd.get('Phone') || fd.get('Investor phone') || '').toString().trim();
       const details = Array.from(fd.entries()).filter(([k]) => !['First name','Last name','Name','Valuation name','Investor name','Email','Valuation email','Investor email','Phone','Investor phone'].includes(k)).map(([k,v]) => `${k}: ${v}`).join(' | ');
+      if(trap || Date.now() - LOADED_AT < MIN_FILL_MS || looksLikeJunkName(name) || looksLikeDotTrickGmail(email)){ showSuccess(form); return; }
       const payload = { source, name, first_name:first, last_name:last, email, phone, details, submittedAt:new Date().toISOString(), page: location.href };
 
       const submitBtn = form.querySelector('button[type="submit"]');
@@ -140,9 +168,7 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       }).catch(()=>{ /* fail silently for the visitor; form still resets */ })
         .finally(()=>{
           if(submitBtn){ submitBtn.disabled = false; }
-          form.reset();
-          const success = form.querySelector('.form-success');
-          if(success){ success.style.display = 'block'; setTimeout(()=>{ success.style.display = 'none'; }, 6000); success.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+          showSuccess(form);
         });
     });
   });
