@@ -162,6 +162,7 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
             <label style="display:grid;gap:6px;color:var(--text);font-weight:600;font-size:.95rem">Notes<textarea name="Notes" rows="4" style="padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff;resize:vertical"></textarea></label>
             <button class="btn btn-primary" type="submit" style="width:max-content">Request signing</button>
             <p class="form-success" style="display:none;margin:4px 0 0;color:#24543a;font-weight:600">Thank you — your request has been received. We will confirm availability shortly.</p>
+            <p class="form-error" role="alert" style="display:none;margin:4px 0 0;color:#8f2d2e;font-weight:600">Something went wrong sending your message. Please try again, or email us directly.</p>
           </form>
           <a class="btn btn-primary" href="mailto:info@theoceans.com">Email Oceans directly</a>
         </div>
@@ -190,8 +191,15 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
 
 <script>
 (function(){
-  // Leads are posted to a HighLevel Inbound Webhook so they land directly in the CRM.
-  const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/lBQkVASJCcdKtyhY2EaN/webhook-trigger/0914ce70-d966-4379-852b-aaa5f551db81';
+  // Leads are emailed through FormSubmit.
+  const FORM_ENDPOINT = 'https://formsubmit.app/f/q8vhg24vbb';
+  const FORM_SUBJECTS = {
+    contact: 'New Oceans Contact lead',
+    valuation: 'New Oceans Home Valuation lead',
+    investor: 'New Oceans Investor lead',
+    'loan-signing': 'New Oceans Loan Signing lead',
+    rate: 'New Oceans Rate Page lead'
+  };
 
 
   // Spam protection (client-side only; real visitors see no change).
@@ -212,9 +220,17 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
     return parts.length >= 4 && parts.filter(p => p.length <= 2).length >= 2; // e.g. "hej.u.qa.be.5.5.0"
   }
   function showSuccess(form){
+    const error = form.querySelector('.form-error');
+    if(error) error.style.display = 'none';
     form.reset();
     const success = form.querySelector('.form-success');
     if(success){ success.style.display = 'block'; setTimeout(()=>{ success.style.display = 'none'; }, 6000); success.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+  }
+  function showError(form){
+    const success = form.querySelector('.form-success');
+    if(success) success.style.display = 'none';
+    const error = form.querySelector('.form-error');
+    if(error){ error.style.display = 'block'; error.scrollIntoView({behavior:'smooth', block:'nearest'}); }
   }
 
   document.querySelectorAll('form[data-lead-form]').forEach(form => {
@@ -230,21 +246,28 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       const email = (fd.get('Email') || fd.get('Valuation email') || fd.get('Investor email') || '').toString().trim();
       const phone = (fd.get('Phone') || fd.get('Investor phone') || '').toString().trim();
       const details = Array.from(fd.entries()).filter(([k]) => !['First name','Last name','Name','Valuation name','Investor name','Email','Valuation email','Investor email','Phone','Investor phone'].includes(k)).map(([k,v]) => `${k}: ${v}`).join(' | ');
+      const message = (fd.get('Message') || fd.get('Notes') || fd.get('Investor goals') || fd.get('Valuation notes') || '').toString().trim();
       if(trap || Date.now() - LOADED_AT < MIN_FILL_MS || looksLikeJunkName(name) || looksLikeDotTrickGmail(email)){ showSuccess(form); return; }
-      const payload = { source, name, first_name:first, last_name:last, email, phone, details, submittedAt:new Date().toISOString(), page: location.href };
+      const payload = { source, form_type:source, name, first_name:first, last_name:last, email, phone, message, details, submittedAt:new Date().toISOString(), page: location.href, _subject: FORM_SUBJECTS[source] || 'New Oceans lead', _replyto: email };
 
       const submitBtn = form.querySelector('button[type="submit"]');
       if(submitBtn){ submitBtn.disabled = true; }
 
-      fetch(WEBHOOK_URL, {
+      fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify(payload)
-      }).catch(()=>{ /* fail silently for the visitor; form still resets */ })
-        .finally(()=>{
-          if(submitBtn){ submitBtn.disabled = false; }
-          showSuccess(form);
-        });
+      }).then(async (res) => {
+        let data = null;
+        try { data = await res.json(); } catch (err) { data = null; }
+        // FormSubmit success is { ok: true, id, message }; errors are { ok: false, error: { code, message } }.
+        if(!res.ok || !data || data.ok !== true) throw new Error('submit failed');
+        showSuccess(form);
+      }).catch(()=>{
+        showError(form);
+      }).finally(()=>{
+        if(submitBtn){ submitBtn.disabled = false; }
+      });
     });
   });
 })();
