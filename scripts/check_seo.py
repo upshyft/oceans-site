@@ -157,6 +157,15 @@ for name in PAGES:
             continue
         fail(f"{name} broken internal link {href}")
 
+for name, path in PAGES.items():
+    if path == "/":
+        continue
+    twin = ROOT / path.lstrip("/")
+    if not twin.is_file():
+        fail(f"missing extensionless copy for {path}")
+    elif twin.read_text() != load(name):
+        fail(f"{twin.name} is out of date with {name}")
+
 for rel in (
     "images/brand-logo.png",
     "images/keston-abe.jpg",
