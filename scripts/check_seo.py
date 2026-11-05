@@ -10,6 +10,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "scripts"))
+from clean_urls import drift_errors
 HOST = "https://www.theoceans.com"
 PAGES = {
     "index.html": "/",
@@ -157,14 +159,8 @@ for name in PAGES:
             continue
         fail(f"{name} broken internal link {href}")
 
-for name, path in PAGES.items():
-    if path == "/":
-        continue
-    twin = ROOT / path.lstrip("/")
-    if not twin.is_file():
-        fail(f"missing extensionless copy for {path}")
-    elif twin.read_text() != load(name):
-        fail(f"{twin.name} is out of date with {name}")
+for error in drift_errors(ROOT):
+    fail(error)
 
 for rel in (
     "images/brand-logo.png",
