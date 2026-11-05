@@ -21,7 +21,7 @@ Use these canonical URLs in `<link rel="canonical">`, Open Graph `og:url`, inter
 | `loan-signing.html` | `https://www.theoceans.com/loan-signing` |
 | `rate.html` | `https://www.theoceans.com/rate` |
 
-Do not point canonicals at the apex domain. Do not add Render redirect rules from `/contact/` to `/contact` (or the same pattern for the other pages). On this service those rules also match the extensionless path and redirect it to itself.
+Do not point canonicals at the apex domain. Do not add Render redirect rules from `/contact/` to `/contact` (or the same pattern for the other pages). On this service those rules also match the extensionless path and redirect it to itself. The extensionless files (`contact`, `valuation`, `investor`, `loan-signing`, `rate`) are copies of the `.html` pages so those canonical paths are real files. After editing a page, copy the `.html` file onto its extensionless twin.
 
 ## When a page changes
 
