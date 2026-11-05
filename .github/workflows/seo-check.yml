@@ -13,9 +13,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Generated clean URLs match their HTML sources
-        run: python3 scripts/generate_clean_urls.py --check
-      - name: Generator self-test
-        run: python3 scripts/generate_clean_urls.py --self-test
       - name: Page metadata, schema, sitemap, and forms
         run: python3 scripts/check_seo.py
+      - name: Clean URLs are served from the HTML sources
+        run: python3 scripts/check_clean_urls.py

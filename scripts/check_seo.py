@@ -10,8 +10,6 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
-from clean_urls import drift_errors
 HOST = "https://www.theoceans.com"
 PAGES = {
     "index.html": "/",
@@ -159,8 +157,17 @@ for name in PAGES:
             continue
         fail(f"{name} broken internal link {href}")
 
-for error in drift_errors(ROOT):
-    fail(error)
+blueprint = (ROOT / "render.yaml").read_text()
+if re.search(r"(?m)^\s*routes\s*:", blueprint):
+    fail("render.yaml must not include a routes block")
+for name, path in PAGES.items():
+    if path == "/":
+        continue
+    duplicate = ROOT / path.lstrip("/")
+    if duplicate.exists():
+        fail(f"duplicate {duplicate.name}; publish {name} only")
+    if f"path: {path}\n" in blueprint:
+        fail(f"render.yaml still sets a header for {path}")
 
 for rel in (
     "images/brand-logo.png",
