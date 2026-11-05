@@ -9,3 +9,28 @@ services:
     pullRequestPreviewsEnabled: false
     domains:
       - www.theoceans.com
+    # Trailing-slash duplicates are not real files, so these redirects can apply.
+    # /page.html cannot be redirected here: Render serves an existing file before rules.
+    routes:
+      - type: redirect
+        source: /contact/
+        destination: /contact
+      - type: redirect
+        source: /valuation/
+        destination: /valuation
+      - type: redirect
+        source: /investor/
+        destination: /investor
+      - type: redirect
+        source: /loan-signing/
+        destination: /loan-signing
+      - type: redirect
+        source: /rate/
+        destination: /rate
+    headers:
+      - path: /images/*
+        name: Cache-Control
+        value: public, max-age=604800
+      - path: /favicon.ico
+        name: Cache-Control
+        value: public, max-age=604800
