@@ -20,6 +20,11 @@ Use these canonical URLs in `<link rel="canonical">`, Open Graph `og:url`, inter
 | `investor.html` | `https://www.theoceans.com/investor` |
 | `loan-signing.html` | `https://www.theoceans.com/loan-signing` |
 | `rate.html` | `https://www.theoceans.com/rate` |
+| `first-home.html` | `https://www.theoceans.com/first-home` |
+| `move-plan.html` | `https://www.theoceans.com/move-plan` |
+| `investment-plan.html` | `https://www.theoceans.com/investment-plan` |
+| `how-we-sell.html` | `https://www.theoceans.com/how-we-sell` |
+| `seller-prep.html` | `https://www.theoceans.com/seller-prep` |
 
 Do not point canonicals at the apex domain. Do not add a `routes` block to `render.yaml`. A redirect from `/contact/` to `/contact` also matches `/contact` on this service and sends that URL to itself. Each page is one `.html` file. Do not commit a second extensionless copy, and do not add a `Content-Type` header for the clean path. Render already serves the `.html` file as HTML at the canonical URL, the `.html` URL, and the trailing-slash URL.
 
@@ -32,7 +37,9 @@ Do not point canonicals at the apex domain. Do not add a `routes` block to `rend
 5. Keep structured data as `RealEstateAgent` / `Organization` / `WebPage` / `Service`. Do not mark the site or the investor page as a `VacationRental`.
 6. Use only facts already published on the site: Oceans Real Estate Group, eXp Realty of Greater Los Angeles, Inc., info@theoceans.com, 424-257-2021, Keston Abe DRE 02167533 (keston@theoceans.com), Tracey Takeshita DRE 02087436 (tracey@theoceans.com, and the loan-signing line 424-254-1010), based in Hermosa Beach, serving the six communities named in the footer. There is no street address on the site, so do not add one.
 7. Leave FormSubmit (`https://formsubmit.app/f/q8vhg24vbb`), the `data-lead-form` values, and the Redfin stat hooks (`data-target`, source links, and the "updated …" line) in place.
-8. Run `python3 scripts/check_seo.py` and `python3 scripts/check_clean_urls.py`. Preview with `python3 scripts/preview.py` and click the mobile Menu, one form (do not submit a real lead), and the main links.
+8. Run `python3 scripts/check_seo.py`, `python3 scripts/check_clean_urls.py`, and `python3 scripts/check_guides.py`. Preview with `python3 scripts/preview.py` and click the mobile Menu, one form (do not submit a real lead), and the main links.
+
+The homepage market counters include the published November 2026 figures in the HTML, so they stay visible when JavaScript is off. The count-up script still replaces those figures while it animates. Guide pages are one `.html` file each and are linked from the Guides menu and the footer. `styles/site.css` is the shared chrome for those pages; the original six pages keep their inline styles. Do not add extensionless copies of the new pages.
 
 ## Images
 

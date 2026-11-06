@@ -17,3 +17,5 @@ jobs:
         run: python3 scripts/check_seo.py
       - name: Clean URLs are served from the HTML sources
         run: python3 scripts/check_clean_urls.py
+      - name: Guides, market-figure fallback, and checklist privacy
+        run: python3 scripts/check_guides.py
