@@ -110,7 +110,7 @@ buyer = read("next-home.html").lower()
 for banned in ("first home", "first-time", "first time", "my first coastal"):
     if banned in buyer:
         fail(f"next-home.html still uses first-time framing: {banned}")
-for phrase in ("How it works", "Decisions to make", 'href="/contact?starter=next-home"'):
+for phrase in ("headline rate", "not a lender", "does not guarantee", 'href="/contact?starter=next-home"'):
     if phrase.lower() not in buyer and phrase not in read("next-home.html"):
         fail(f"next-home.html missing {phrase}")
 
