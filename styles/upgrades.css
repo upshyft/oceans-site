@@ -23,6 +23,14 @@ a.path-card:focus-visible,a.guide-card:focus-visible,.choice-nav a:focus-visible
 .tool-row a.btn-primary,.prep-actions a.btn-primary{background:#062b4b;color:#fff}
 
 .page-hero{padding:48px 0 12px;border-top:none}
+h2.plain-heading{margin:28px 0 8px;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(1.8rem,3vw,2.3rem);line-height:1.05;color:#062b4b}
+.plain-steps{margin:0;padding-left:1.25rem;max-width:68ch}
+.section .plain-steps li{margin:10px 0;color:#314154;font-size:1.05rem}
+.compare-block{margin:22px 0 0}
+h3.compare-label{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:1.55rem;line-height:1.1;color:#062b4b}
+.compare-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.section .compare-3 p{margin:0;padding:14px;background:#fcfbf8;border:1px solid rgba(19,37,58,.12);border-radius:16px;color:#314154}
+.compare-3 b{color:#062b4b}
 h1.page-title{max-width:18em;font-size:clamp(2.5rem,5vw,4rem);line-height:.98;letter-spacing:-.03em;color:#062b4b}
 .page-hero .lede{max-width:62ch;color:#314154}
 .sample-flag,.disclaimer,.review-date{margin:0 0 18px;padding:14px 16px;border-radius:16px;background:#f1ede6;color:#13253a;border-left:4px solid #062b4b}
@@ -59,7 +67,7 @@ details.kit-block summary:focus-visible{outline:3px solid #062b4b;outline-offset
 .stat-fallback{margin:14px 0 0;color:#13253a}
 
 @media (max-width:900px){
-  .path-grid,.move-grid,.kit-grid{grid-template-columns:1fr}
+  .path-grid,.move-grid,.kit-grid,.compare-3{grid-template-columns:1fr}
   .nav-guides-panel{position:static;min-width:0;margin:0 0 8px;box-shadow:none}
   .page-hero{padding-top:28px}
   h1.page-title{font-size:clamp(2.2rem,10vw,3rem)}
