@@ -1,0 +1,71 @@
+/* Guides and homepage paths. New text uses #13253a / #314154 on cream so it clears WCAG AA. Existing gold labels are unchanged. */
+
+.section p.ink,.section .path-card p,.section .guide-card p,.section .move-card p,.section .move-card dd,.section .kit-block p,.section .kit-block li,.section .plan-block p,.section .plan-list li,.section .starter,.section .sample-flag,.section .disclaimer,.section .review-date,.section .ask-note,.section .stat-fallback,.section .prep-list label{color:#314154}
+.nav-guides{position:relative}
+.nav-guides summary{display:inline-flex;align-items:center;min-height:44px;padding:0 2px;color:#13253a;font-size:14px;font-weight:700;cursor:pointer;list-style:none}
+.nav-guides summary::-webkit-details-marker{display:none}
+.nav-guides summary:focus-visible{outline:3px solid #062b4b;outline-offset:3px;border-radius:8px}
+.nav-guides-panel{position:absolute;top:calc(100% + 8px);left:0;z-index:60;display:grid;min-width:230px;padding:8px;background:#fcfbf8;border:1px solid #d7d1c7;border-radius:16px;box-shadow:0 12px 40px rgba(19,37,58,.12)}
+.nav-guides-panel a{padding:10px 12px;border-radius:10px;color:#13253a;text-decoration:none;font-size:15px}
+.nav-guides-panel a:hover,.nav-guides-panel a:focus-visible{background:#f1ede6;outline:none}
+.nav-guides-panel a:focus-visible{outline:3px solid #062b4b;outline-offset:0}
+
+.path-grid,.move-grid,.kit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.path-card,.guide-card,.move-card{display:flex;flex-direction:column;gap:8px;min-height:100%;background:#fcfbf8;border:1px solid rgba(19,37,58,.12);border-radius:24px;padding:24px;color:#13253a;text-decoration:none;box-shadow:0 12px 40px rgba(19,37,58,.06)}
+a.path-card:hover,a.path-card:focus-visible,a.guide-card:hover{border-color:#062b4b}
+a.path-card:focus-visible,a.guide-card:focus-visible,.choice-nav a:focus-visible,.prep-actions button:focus-visible,.path-switch label:focus-visible{outline:3px solid #062b4b;outline-offset:3px}
+.section p.path-kicker,.section p.kit-kicker,.path-kicker,.kit-kicker{margin:0;color:#062b4b;font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.path-card h3,.guide-card h3,.move-card h2,.kit-block h2{margin:0;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:2rem;line-height:1;color:#062b4b}
+.path-card p,.guide-card p,.move-card p,.kit-block p, .kit-block li, .plan-list li{color:#314154}
+.path-go{margin-top:auto;padding-top:12px;color:#062b4b;font-weight:700}
+.tool-row,.choice-nav,.prep-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+.tool-row a,.choice-nav a,.prep-actions button,.prep-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 18px;border-radius:999px;border:1px solid #062b4b;background:#fff;color:#062b4b;font:700 15px/1 Inter,system-ui,sans-serif;text-decoration:none;cursor:pointer}
+.tool-row a.btn-primary,.prep-actions a.btn-primary{background:#062b4b;color:#fff}
+
+.page-hero{padding:48px 0 12px;border-top:none}
+h1.page-title{max-width:18em;font-size:clamp(2.5rem,5vw,4rem);line-height:.98;letter-spacing:-.03em;color:#062b4b}
+.page-hero .lede{max-width:62ch;color:#314154}
+.sample-flag,.disclaimer,.review-date{margin:0 0 18px;padding:14px 16px;border-radius:16px;background:#f1ede6;color:#13253a;border-left:4px solid #062b4b}
+.disclaimer{background:#fcfbf8}
+.stack{display:grid;gap:18px;margin-top:8px}
+.kit-block,.plan-block{background:#fcfbf8;border:1px solid rgba(19,37,58,.1);border-radius:24px;padding:24px}
+.kit-block h2,.plan-block h2{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(1.8rem,3vw,2.4rem);line-height:1.05;color:#062b4b}
+.plan-list,.kit-block ol,.kit-block ul,.prep-list{margin:8px 0 0;padding-left:1.2rem}
+.plan-list li,.kit-block li{margin:6px 0}
+.starter{margin:12px 0;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid #d7d1c7;color:#13253a}
+.starter b{display:block;margin-bottom:4px;color:#062b4b}
+
+.move-planner{display:grid;gap:18px}
+.path-switch{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.path-radio{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.path-switch label{display:inline-flex;align-items:center;min-height:48px;padding:0 16px;border-radius:999px;border:1px solid #062b4b;background:#fff;color:#062b4b;font-weight:700;cursor:pointer}
+.path-radio:checked + label{background:#062b4b;color:#fff}
+.path-radio:focus-visible + label{outline:3px solid #062b4b;outline-offset:3px}
+.move-planner:has(#path-buy:checked) article[data-path="buy"],
+.move-planner:has(#path-sell:checked) article[data-path="sell"],
+.move-planner:has(#path-both:checked) article[data-path="both"]{border-color:#062b4b;box-shadow:0 0 0 2px #062b4b}
+.move-card dl{margin:8px 0 0}
+.move-card dt{margin-top:12px;font-weight:700;color:#062b4b}
+.move-card dd{margin:2px 0 0;color:#314154}
+
+.prep-group{margin-top:8px}
+.prep-list{list-style:none;padding:0}
+.prep-list label{display:flex;gap:12px;align-items:flex-start;min-height:44px;padding:8px 0;color:#13253a;font-size:1.02rem}
+.prep-list input{width:1.25rem;height:1.25rem;margin-top:.2rem;accent-color:#062b4b;flex:none}
+.ask-note{margin:0 0 8px;color:#314154}
+
+details.kit-block summary{cursor:pointer;font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.4rem);color:#062b4b}
+details.kit-block summary:focus-visible{outline:3px solid #062b4b;outline-offset:3px}
+.stat-fallback{margin:14px 0 0;color:#13253a}
+
+@media (max-width:900px){
+  .path-grid,.move-grid,.kit-grid{grid-template-columns:1fr}
+  .nav-guides-panel{position:static;min-width:0;margin:0 0 8px;box-shadow:none}
+  .page-hero{padding-top:28px}
+  h1.page-title{font-size:clamp(2.2rem,10vw,3rem)}
+}
+@media print{
+  .site-header,.footer,.prep-actions,.skip,.no-print{display:none !important}
+  .prep-list label{break-inside:avoid}
+  body{background:#fff}
+}

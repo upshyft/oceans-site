@@ -18,6 +18,11 @@ PAGES = {
     "investor.html": "/investor",
     "loan-signing.html": "/loan-signing",
     "rate.html": "/rate",
+    "first-home.html": "/first-home",
+    "move-plan.html": "/move-plan",
+    "investment-plan.html": "/investment-plan",
+    "how-we-sell.html": "/how-we-sell",
+    "seller-prep.html": "/seller-prep",
 }
 FORBIDDEN_TYPES = {"VacationRental", "LodgingBusiness", "Review", "AggregateRating"}
 FORM_ENDPOINT = "https://formsubmit.app/f/q8vhg24vbb"
@@ -149,7 +154,7 @@ for name in PAGES:
     for href in link_re.findall(load(name)):
         if href.startswith(("mailto:", "tel:", "http://", "https://", "#")):
             continue
-        path = href.split("#", 1)[0] or "/"
+        path = href.split("#", 1)[0].split("?", 1)[0] or "/"
         if path in known or path in PAGES.values():
             continue
         candidate = ROOT / path.lstrip("/")

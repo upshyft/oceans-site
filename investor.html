@@ -74,6 +74,7 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
   .site-header .header-links a{padding:12px 2px;font-size:16px;color:var(--text)}
 }
 </style>
+<link rel="stylesheet" href="/styles/upgrades.css">
 
 <script type="application/ld+json">
 {
@@ -222,6 +223,16 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       <a href="/valuation">Valuation</a>
       <a href="/investor">Investors</a>
       <a href="/loan-signing">Loan Signing</a>
+      <details class="nav-guides">
+        <summary>Guides</summary>
+        <div class="nav-guides-panel">
+          <a href="/first-home">First coastal home</a>
+          <a href="/move-plan">Selling and buying</a>
+          <a href="/investment-plan">Buying an investment</a>
+          <a href="/how-we-sell">How we'd sell</a>
+          <a href="/seller-prep">Seller prep</a>
+        </div>
+      </details>
       <a href="/contact">Contact</a>
     </nav>
     <a class="header-cta" href="/contact">Contact</a>
@@ -276,6 +287,11 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       <a href="/investor">Investors</a>
       <a href="/loan-signing">Loan Signing</a>
       <a href="/rate">Rate inquiry</a>
+      <a href="/first-home">First home</a>
+      <a href="/move-plan">Move plan</a>
+      <a href="/investment-plan">Investment plan</a>
+      <a href="/how-we-sell">How we'd sell</a>
+      <a href="/seller-prep">Seller prep</a>
       <a href="/contact">Contact</a>
     </nav>
     <p class="footer-copy">Oceans Real Estate Group serves Manhattan Beach, Hermosa Beach, Redondo Beach, El Segundo, Torrance, and Palos Verdes with elevated presentation and attentive guidance.</p>
@@ -385,6 +401,18 @@ select{width:100%;max-width:100%;min-height:52px;height:52px;padding:0 14px;font
       btn.textContent='Menu';
     });
   });
+})();
+</script>
+
+<script>
+(function(){
+  var starters = {"investment": "I am considering buying an investment property in the South Bay. I would like to talk through how long I might hold it, who would manage it, and which communities to see. I am not asking for a projected return."};
+  var key = "";
+  try { key = new URLSearchParams(location.search).get("starter") || ""; } catch (e) {}
+  var text = starters[key];
+  if (!text) return;
+  var field = document.querySelector("textarea[name=\"Investor goals\"]");
+  if (field && !String(field.value || "").trim()) field.value = text;
 })();
 </script>
 
