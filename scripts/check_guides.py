@@ -45,9 +45,11 @@ for open_tag, text, _close in stats:
         fail(f"counter still renders a zero placeholder: {text}")
 if "stat-fallback" not in index or "$1.3M" not in index:
     fail("homepage is missing the no-JavaScript market-figure fallback")
-for href in ("/first-home", "/move-plan", "/investment-plan", "/how-we-sell", "/seller-prep"):
+for href in ("/next-home", "/move-plan", "/investment-plan", "/how-we-sell", "/seller-prep"):
     if f'href="{href}"' not in index:
         fail(f"homepage does not link to {href}")
+if 'href="/first-home"' in index or "My first coastal home" in index:
+    fail("homepage still promotes the first-home path")
 
 how = read("how-we-sell.html")
 for phrase in ("Illustrative sample", "not a current listing", "not a client", "not a sale result"):
@@ -88,7 +90,7 @@ contact = read("contact.html")
 valuation = read("valuation.html")
 investor = read("investor.html")
 for page_name, page, key in (
-    ("first-home.html", contact, "first-home"),
+    ("next-home.html", contact, "next-home"),
     ("move-plan.html", contact, "move-compare"),
     ("investment-plan.html", investor, "investment"),
     ("how-we-sell.html", valuation, "sell-launch"),
@@ -103,6 +105,28 @@ for page_name, page, key in (
         continue
     if quoted.group(1) not in page:
         fail(f"{key} starter is not the prefilled text on the existing form page")
+
+buyer = read("next-home.html").lower()
+for banned in ("first home", "first-time", "first time", "my first coastal"):
+    if banned in buyer:
+        fail(f"next-home.html still uses first-time framing: {banned}")
+for phrase in ("How it works", "Decisions to make", 'href="/contact?starter=next-home"'):
+    if phrase.lower() not in buyer and phrase not in read("next-home.html"):
+        fail(f"next-home.html missing {phrase}")
+
+redirect = read("first-home.html")
+for needle in (
+    'http-equiv="refresh" content="0; url=/next-home"',
+    'href="/next-home"',
+    'rel="canonical" href="https://www.theoceans.com/next-home"',
+    'content="noindex"',
+):
+    if needle not in redirect:
+        fail(f"first-home redirect missing {needle}")
+if "My first coastal home" in redirect or "first-home plan" in redirect.lower():
+    fail("first-home.html still contains the old guide")
+if re.search(r"(?m)^\s*routes\s*:", (ROOT / "render.yaml").read_text()):
+    fail("render.yaml must not add a routes block for this redirect")
 
 if errors:
     print("FAILED")

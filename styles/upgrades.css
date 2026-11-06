@@ -23,6 +23,9 @@ a.path-card:focus-visible,a.guide-card:focus-visible,.choice-nav a:focus-visible
 .tool-row a.btn-primary,.prep-actions a.btn-primary{background:#062b4b;color:#fff}
 
 .page-hero{padding:48px 0 12px;border-top:none}
+h2.plain-heading{margin:28px 0 8px;font-family:"Cormorant Garamond",serif;font-weight:500;font-size:clamp(1.8rem,3vw,2.3rem);line-height:1.05;color:#062b4b}
+.plain-steps{margin:0;padding-left:1.25rem;max-width:62ch}
+.section .plain-steps li{margin:10px 0;color:#314154;font-size:1.05rem}
 h1.page-title{max-width:18em;font-size:clamp(2.5rem,5vw,4rem);line-height:.98;letter-spacing:-.03em;color:#062b4b}
 .page-hero .lede{max-width:62ch;color:#314154}
 .sample-flag,.disclaimer,.review-date{margin:0 0 18px;padding:14px 16px;border-radius:16px;background:#f1ede6;color:#13253a;border-left:4px solid #062b4b}

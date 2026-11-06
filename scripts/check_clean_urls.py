@@ -22,7 +22,7 @@ PAGES = {
     "investor.html": "/investor",
     "loan-signing.html": "/loan-signing",
     "rate.html": "/rate",
-    "first-home.html": "/first-home",
+    "next-home.html": "/next-home",
     "move-plan.html": "/move-plan",
     "investment-plan.html": "/investment-plan",
     "how-we-sell.html": "/how-we-sell",

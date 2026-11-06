@@ -20,13 +20,15 @@ Use these canonical URLs in `<link rel="canonical">`, Open Graph `og:url`, inter
 | `investor.html` | `https://www.theoceans.com/investor` |
 | `loan-signing.html` | `https://www.theoceans.com/loan-signing` |
 | `rate.html` | `https://www.theoceans.com/rate` |
-| `first-home.html` | `https://www.theoceans.com/first-home` |
+| `next-home.html` | `https://www.theoceans.com/next-home` |
 | `move-plan.html` | `https://www.theoceans.com/move-plan` |
 | `investment-plan.html` | `https://www.theoceans.com/investment-plan` |
 | `how-we-sell.html` | `https://www.theoceans.com/how-we-sell` |
 | `seller-prep.html` | `https://www.theoceans.com/seller-prep` |
 
 Do not point canonicals at the apex domain. Do not add a `routes` block to `render.yaml`. A redirect from `/contact/` to `/contact` also matches `/contact` on this service and sends that URL to itself. Each page is one `.html` file. Do not commit a second extensionless copy, and do not add a `Content-Type` header for the clean path. Render already serves the `.html` file as HTML at the canonical URL, the `.html` URL, and the trailing-slash URL.
+
+`first-home.html` is only a document that sends `/first-home`, `/first-home.html`, and `/first-home/` to `/next-home`. It is not a content page and it is not in the sitemap. The check still rejects every `routes` block, so this is not a Render service redirect.
 
 ## When a page changes
 
