@@ -31,6 +31,11 @@ h3.compare-label{margin:0 0 8px;font-family:"Cormorant Garamond",serif;font-weig
 .compare-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .section .compare-3 p{margin:0;padding:14px;background:#fcfbf8;border:1px solid rgba(19,37,58,.12);border-radius:16px;color:#314154}
 .compare-3 b{color:#062b4b}
+.faq-list{display:grid;gap:10px;max-width:760px}
+.faq-item{background:#fcfbf8;border:1px solid rgba(19,37,58,.12);border-radius:16px;padding:0 16px}
+.faq-item summary{cursor:pointer;padding:14px 0;font-weight:700;color:#13253a}
+.faq-item summary:focus-visible{outline:3px solid #062b4b;outline-offset:3px}
+.section .faq-item p{margin:0 0 14px;color:#314154}
 h1.page-title{max-width:18em;font-size:clamp(2.5rem,5vw,4rem);line-height:.98;letter-spacing:-.03em;color:#062b4b}
 .page-hero .lede{max-width:62ch;color:#314154}
 .sample-flag,.disclaimer,.review-date{margin:0 0 18px;padding:14px 16px;border-radius:16px;background:#f1ede6;color:#13253a;border-left:4px solid #062b4b}
